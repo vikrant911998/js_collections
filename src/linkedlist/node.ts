@@ -1,10 +1,10 @@
-class LinkedListNode<T>{
+export class LinkedListNode<T> {
 	private _value!: NonNullable<T>;
-	private _next!: LinkedListNode<NonNullable<T>> | null;
+	private _next!: LinkedListNode<T> | null;
 
-	constructor(value: NonNullable<T>, next: LinkedListNode<NonNullable<T>> | null = null) {
-		this.value = value;
-		this.next = next;
+	constructor(value: NonNullable<T>, next: LinkedListNode<T> | null = null) {
+		this._value = value;
+		this._next = next;
 	}
 
 	set value(argValue: NonNullable<T>) {
@@ -15,11 +15,19 @@ class LinkedListNode<T>{
 		return this._value;
 	}
 
-	set next(node: LinkedListNode<NonNullable<T>> | null) {
+	set next(node: LinkedListNode<T> | null) {
 		this._next = node;
 	}
 
-	get next(): LinkedListNode<NonNullable<T>> | null {
+	get next(): LinkedListNode<T> | null {
 		return this._next;
+	}
+
+	hasNext(): boolean {
+		return this._next !== null;
+	}
+
+	toString(): string {
+		return `Node(value: ${this._value})`;
 	}
 }
