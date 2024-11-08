@@ -1,17 +1,20 @@
 export class LinkedListNode<T> {
-	private _value!: NonNullable<T>;
+	private _value!: T;
 	private _next!: LinkedListNode<T> | null;
 
-	constructor(value: NonNullable<T>, next: LinkedListNode<T> | null = null) {
-		this._value = value;
-		this._next = next;
+	constructor(value: T, next: LinkedListNode<T> | null = null) {
+		this.value = value;
+		this.next = next;
 	}
 
-	set value(argValue: NonNullable<T>) {
+	set value(argValue: T) {
+		if (!argValue) {
+			throw new Error('Node value possibly null or undefined');
+		}
 		this._value = argValue;
 	}
 
-	get value(): NonNullable<T> {
+	get value(): T {
 		return this._value;
 	}
 
