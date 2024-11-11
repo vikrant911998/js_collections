@@ -1,11 +1,23 @@
 import { LinkedListNode } from 'src/linkedlist/node';
 
 describe("LinkedListNode", () => {
+
 	// Test for constructor initialization
 	it('should initialize with the given value and next as null by default', () => {
 		const node = new LinkedListNode(10);
 		expect(node.value).toBe(10);
+		expect(node.toString()).toBe(`Node(value: 10)`);
+		expect(node.hasNext()).toBe(false);
 		expect(node.next).toBeNull();
+	});
+
+	it('should throw error with null value', () => {
+		try {
+			new LinkedListNode(null);
+		} catch (error) {
+			expect(error).toBeInstanceOf(Error);
+			expect((error as Error).message).toBe('Node value possibly null or undefined');
+		}
 	});
 
 	// Test for setting and getting value
