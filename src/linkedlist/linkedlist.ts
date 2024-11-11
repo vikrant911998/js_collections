@@ -53,4 +53,19 @@ export class LinkedList<T> {
 			throw new Error("Linked List is empty");
 		}
 	}
+
+	length() {
+		let count = 0;
+		if (this.head === null) {
+			return 0;
+		}
+		else {
+			let tempHead: LinkedListNode<T> | null = this.head;
+			while (tempHead !== null) {
+				count++;
+				tempHead = tempHead.next;
+			}
+		}
+		return count;
+	}
 }
