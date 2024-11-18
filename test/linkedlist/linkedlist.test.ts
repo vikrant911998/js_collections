@@ -5,7 +5,7 @@ describe("LinkedList", () => {
 	let list: LinkedList<number>;
 
 	beforeEach(() => {
-		list = new LinkedList();
+		list = new LinkedList<number>();
 	});
 
 	describe('should have method named: ', () => {
@@ -90,10 +90,57 @@ describe("LinkedList", () => {
 		});
 	});
 
+	describe('clear method', () => {
 
-	it('should add element to the last', () => {
-		list.addLast(new LinkedListNode(10));
-		list.addLast(new LinkedListNode(20));
-		expect(list.len()).toBe(2)
+		it('should clear a list', () => {
+			list.add(new LinkedListNode(10));
+			expect(list.len()).toBe(1);
+			expect(list.isEmpty()).toBe(false);
+
+			list.clear();
+
+			expect(list.len()).toBe(0);
+			expect(list.head).toBe(null);
+			expect(list.isEmpty()).toBe(true);
+		});
+
+		it('should clear an empty list without errors', () => {
+			expect(list.len()).toBe(0);
+			expect(list.head).toBe(null);
+			expect(list.isEmpty()).toBe(true);
+
+			list.clear();
+
+			expect(list.len()).toBe(0);
+			expect(list.head).toBe(null);
+			expect(list.isEmpty()).toBe(true);
+		});
+
+		it('should allow adding elements after clearing the list', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+
+			list.clear();
+
+			list.add(new LinkedListNode(30));
+			list.add(new LinkedListNode(40));
+
+			expect(list.len()).toBe(2);
+			expect(list.isEmpty()).toBe(false);
+		});
+
+		it('should handle clearing a list multiple times', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+
+			list.clear();
+			list.clear();
+
+			expect(list.len()).toBe(0);
+			expect(list.head).toBe(null);
+			expect(list.isEmpty()).toBe(true);
+		});
 	});
+
+
 });

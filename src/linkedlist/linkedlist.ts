@@ -5,7 +5,7 @@ export class LinkedList<T> {
 	private _head: LinkedListNode<T> | null = null;
 	private _length: number = 0;
 
-	set head(argHead: LinkedListNode<T>) {
+	set head(argHead: LinkedListNode<T> | null) {
 		this._head = argHead;
 	}
 	get head(): LinkedListNode<T> | null {
@@ -45,7 +45,7 @@ export class LinkedList<T> {
 		this.add(newNode);
 	}
 
-	print() {
+	print(): void {
 		if (this.head !== null) {
 			let tempHead: LinkedListNode<T> | null = this.head;
 			while (tempHead !== null) {
@@ -57,12 +57,13 @@ export class LinkedList<T> {
 		}
 	}
 
-	len() {
+	len(): number {
 		return this._length;
 	}
 
-	clear() {
-
+	clear(): void {
+		this.head = null;
+		this._length = 0;
 	}
 
 	get() {
@@ -101,7 +102,7 @@ export class LinkedList<T> {
 
 	}
 
-	isEmpty() {
-
+	isEmpty(): boolean {
+		return this.head === null;
 	}
 }
