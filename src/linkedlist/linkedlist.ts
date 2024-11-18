@@ -14,7 +14,7 @@ export class LinkedList<T> {
 
 	constructor(node?: LinkedListNode<T>) {
 		if (!!node) {
-			this.head = node;
+			this.add(node);
 		}
 	}
 
@@ -59,5 +59,45 @@ export class LinkedList<T> {
 
 	len() {
 		return this._length;
+	}
+
+	clear() {
+
+	}
+
+	get() {
+
+	}
+
+	getFirst() {
+
+	}
+
+	getLast() {
+
+	}
+
+	indexOf() {
+
+	}
+
+	lastIndexOf() {
+
+	}
+
+	remove() {
+
+	}
+
+	removeFirst() {
+
+	}
+
+	removeLast() {
+
+	}
+
+	toArray() {
+
 	}
 }
