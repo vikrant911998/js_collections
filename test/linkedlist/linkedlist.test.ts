@@ -181,4 +181,18 @@ describe("LinkedList", () => {
 			expect(list.get(list.len() - 1)?.value).toBe(30);
 		});
 	});
+
+	describe('getFirst method', () => {
+		it('should retrieve the node at zeroth index', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+			list.add(new LinkedListNode(30));
+
+			expect(list.getFirst()?.value).toBe(10);
+		});
+
+		it('should throw an error for an empty list', () => {
+			expect(() => list.getFirst()).toThrow('Empty Linked List');
+		});
+	});
 });

@@ -79,8 +79,11 @@ export class LinkedList<T> {
 		return current;
 	}
 
-	getFirst() {
-
+	getFirst(): LinkedListNode<T> | null {
+		if (!this.head) {
+			throw new Error('Empty Linked List');
+		}
+		return this.head;
 	}
 
 	getLast() {
