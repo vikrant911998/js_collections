@@ -83,6 +83,11 @@ describe("LinkedList", () => {
 			expect(list.toArray).toBeDefined();
 			expect(typeof list.toArray).toBe('function');
 		});
+
+		it('isEmpty', () => {
+			expect(list.isEmpty).toBeDefined();
+			expect(typeof list.isEmpty).toBe('function');
+		});
 	});
 
 

@@ -100,4 +100,8 @@ export class LinkedList<T> {
 	toArray() {
 
 	}
+
+	isEmpty() {
+
+	}
 }
