@@ -66,8 +66,17 @@ export class LinkedList<T> {
 		this._length = 0;
 	}
 
-	get() {
-
+	get(index: number): LinkedListNode<T> | null {
+		if (index < 0 || index >= this._length) {
+			throw new Error('Index out of bounds');
+		}
+		let current = this.head;
+		let currentIndex = 0;
+		while (current && currentIndex < index) {
+			current = current.next;
+			currentIndex++;
+		}
+		return current;
 	}
 
 	getFirst() {

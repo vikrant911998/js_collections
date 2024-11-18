@@ -142,5 +142,43 @@ describe("LinkedList", () => {
 		});
 	});
 
+	describe('get method', () => {
+		it('should retrieve the node at a valid index', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+			list.add(new LinkedListNode(30));
 
+			expect(list.get(0)?.value).toBe(10);
+			expect(list.get(1)?.value).toBe(20);
+			expect(list.get(2)?.value).toBe(30);
+		});
+
+		it('should throw an error for a negative index', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+
+			expect(() => list.get(-1)).toThrow('Index out of bounds');
+		});
+
+		it('should throw an error for an index greater than or equal to the length', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+
+			expect(() => list.get(2)).toThrow('Index out of bounds');
+			expect(() => list.get(4)).toThrow('Index out of bounds');
+		});
+
+		it('should throw an error when trying to get from an empty list', () => {
+			expect(() => list.get(0)).toThrow('Index out of bounds');
+		});
+
+		it('should handle retrieving the first and last index node correctly', () => {
+			list.add(new LinkedListNode(10));
+			list.add(new LinkedListNode(20));
+			list.add(new LinkedListNode(30));
+
+			expect(list.get(0)?.value).toBe(10)
+			expect(list.get(list.len() - 1)?.value).toBe(30);
+		});
+	});
 });
