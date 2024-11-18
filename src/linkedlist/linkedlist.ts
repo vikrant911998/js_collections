@@ -3,6 +3,7 @@ import { LinkedListNode } from "./node";
 
 export class LinkedList<T> {
 	private _head: LinkedListNode<T> | null = null;
+	private _length: number = 0;
 
 	set head(argHead: LinkedListNode<T>) {
 		this._head = argHead;
@@ -27,6 +28,7 @@ export class LinkedList<T> {
 			}
 			tempHead.next = newNode;
 		}
+		this._length++;
 	}
 
 	addFirst(newNode: LinkedListNode<T>) {
@@ -36,6 +38,7 @@ export class LinkedList<T> {
 			newNode.next = this.head;
 			this.head = newNode;
 		}
+		this._length++;
 	}
 
 	addLast(newNode: LinkedListNode<T>) {
@@ -54,18 +57,7 @@ export class LinkedList<T> {
 		}
 	}
 
-	length() {
-		let count = 0;
-		if (this.head === null) {
-			return 0;
-		}
-		else {
-			let tempHead: LinkedListNode<T> | null = this.head;
-			while (tempHead !== null) {
-				count++;
-				tempHead = tempHead.next;
-			}
-		}
-		return count;
+	len() {
+		return this._length;
 	}
 }
